@@ -17,3 +17,9 @@ $(document)
         
         return false;
     });
+
+$(window).bind("hashchange", function(e){
+    var target = $.bbq.getState("target");
+    $("div#container > div").hide();
+    $("div#" + target).show();
+});
