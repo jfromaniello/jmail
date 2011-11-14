@@ -32,3 +32,7 @@ assertNotContains = function (array, fun, message) {
     return this;
   };
 })( jQuery );
+
+
+$.blockUI = function(){};
+$.unblockUI = function(){};
