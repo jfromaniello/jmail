@@ -35,11 +35,36 @@
 
 	</head>
 	<body>
-@Html.Partial(@"pages\menu.cshtml")
+<ul>
+	<li><a id="inbox" href="#">Inbox</a></li>
+	<li><a id="compose" href="#">Compose</a></li>
+</ul>
 		<div id="container">	
-@Html.Partial(@"pages\compose.cshtml")
-@Html.Partial(@"pages\inbox.cshtml")
+<div id="compose" style="display: none">
+	<form>
+	  	<fieldset>
+			<legend>Personalia:</legend>
+				<label for="to">From</label><input type="mail" id="to" /><br />
+				<label for="subject">Subject</label><input type="text" id="subject" /><br />
+				Content <br />
+				<textarea rows="2" cols="20" id="mailbody"></textarea>
+		</fieldset>
+
+
+		<input type="submit" value="Submit" />
+	</form>
+</div>
+<div id="inbox">
+	<ul>
+	</ul>
+</div>
 		</div>
 	</body>
-@Html.Partial(@"templates\mail-templates.cshtml")	
+<script id="inboxMailTemplate" type="text/x-jquery-tmpl">
+    <li class="mail"><b>${from}</b> ${subject}</li>
+</script>
+
+<script id="inboxEmptyTemplate" type="text/x-jquery-tmpl">
+    <li>The inbox is empty</li>
+</script>	
 </html>

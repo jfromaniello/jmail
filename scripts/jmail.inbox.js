@@ -2,17 +2,17 @@
     
     this.loadPage = function(){
         $.blockUI({message: "Loading mails, please wait."});
-        
+        var target = $("div#inbox > ul").html("");
         $.post("/getLastestMails")
          .done(function(mails){
             if(mails.length === 0){
                 $("#inboxEmptyTemplate")
                     .tmpl()
-                    .appendTo("div#inbox > ul");
+                    .appendTo(target);
             }else{
                 $("#inboxMailTemplate")
                     .tmpl(mails)
-                    .appendTo("div#inbox > ul");
+                    .appendTo(target);
             }
          }).always($.unblockUI);
     };

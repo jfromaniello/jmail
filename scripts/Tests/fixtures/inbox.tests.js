@@ -58,3 +58,10 @@ test("after loading the inbox it should unblock the ui", function(){
     this.server.respond();
     ok(blockUiStub.called);
 });
+
+
+test("when loading the inbox, it should clean the container first", function() {
+    $("<li>hahaha</li>").appendTo($("div#inbox > ul"));
+    jmail.inbox.loadPage();
+    equal($("div#inbox > ul").children().length, 0);
+});     

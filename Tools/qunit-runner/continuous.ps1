@@ -11,6 +11,9 @@ $currentLocation = Get-Location
 watch "$currentLocation\..\..\" | %{
 	#Ignore $_
 	
+	$razorIndexTemplate = resolve-path .\..\..\index.cshtml
+	..\razorcandle\razorcandle.exe "$razorIndexTemplate"
+
 	$razorTemplate = resolve-path .\..\..\scripts\Tests\All.Tests.cshtml
 	..\razorcandle\razorcandle.exe "$razorTemplate" /M="{CI: false}"
 	.\phantomjs.exe run-qunit.js .\..\..\scripts\Tests\All.Tests.html
