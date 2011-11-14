@@ -22,4 +22,7 @@ $(window).bind("hashchange", function(e){
     var target = $.bbq.getState("target");
     $("div#container > div").hide();
     $("div#" + target).show();
+    if(jmail[target] && jmail[target].loadPage){
+        jmail[target].loadPage();   
+    }
 });

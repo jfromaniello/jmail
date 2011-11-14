@@ -51,3 +51,17 @@ test("when changing the hash to target=compose then inbox should be hide", funct
     var isInboxVisible = $("div#inbox").is(":visible");
     ok(!isInboxVisible);
 });
+
+test("when changing the hash to target=inbox then call the inbox.loadPage", function() {
+    //arrange
+    var getState = this.stub($.bbq, "getState"),
+        jmailLoadPage = this.stub(jmail.inbox, "loadPage");
+
+    getState.withArgs("target").returns("inbox");
+
+    //act
+    $(window).triggerHandler("hashchange");
+
+    //assert
+    ok(jmailLoadPage.called);
+});

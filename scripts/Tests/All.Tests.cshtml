@@ -30,13 +30,13 @@
 		<h2 id="qunit-userAgent"></h2>
 		<ol id="qunit-tests"></ol>
 		<div id="qunit-fixture">
-			<div id="container">
-				
+			@Html.Partial(@"..\..\pages\menu.cshtml")
+			<div id="container">	
 				@Html.Partial(@"..\..\pages\compose.cshtml")
 				@Html.Partial(@"..\..\pages\inbox.cshtml")
 			</div>
 		</div>
-		@Html.Partial(@"..\..\pages\menu.cshtml")
+		
 		@Html.Partial(@"..\..\templates\mail-templates.cshtml")
 
 	    @foreach (var file in System.IO.Directory.GetFiles("fixtures\\", "*.js")
