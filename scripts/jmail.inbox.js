@@ -3,9 +3,15 @@
     this.loadPage = function(){
         $.post("/getLastestMails")
          .done(function(mails){
-            $("#inboxMailTemplate")
-                .tmpl(mails)
-                .appendTo("div#inbox > ul"); 
+            if(mails.length === 0){
+                $("#inboxEmptyTemplate")
+                    .tmpl()
+                    .appendTo("div#inbox > ul");
+            }else{
+                $("#inboxMailTemplate")
+                    .tmpl(mails)
+                    .appendTo("div#inbox > ul");
+            }
          });
     };
 
