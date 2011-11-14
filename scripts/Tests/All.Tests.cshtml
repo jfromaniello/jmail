@@ -1,0 +1,45 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<script src="../jquery-1.6.2.js" type="text/javascript"></script>
+		<script src="../jQuery.tmpl.js" type="text/javascript"></script>
+		<script src="../jQuery.blockUI.js" type="text/javascript"></script>
+		<script src="../common.js" type="text/javascript"></script>
+		<script src="../json2.js" type="text/javascript"></script>
+		<script src="../jmail.inbox.js" type="text/javascript"></script>
+
+		<script src="qunit.js" type="text/javascript"></script>
+		<script src="sinon-1.2.0.js" type="text/javascript"></script>
+		<script src="sinon-qunit-1.0.0.js" type="text/javascript"></script>
+		
+		@if((bool)@Model.CI){
+			<script src="Qunit.Teamcity.js" type="text/javascript"></script>
+		}else{
+			<script src="qunit.continuous.js" type="text/javascript"></script>
+		}
+		<script src="Util.Tests.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="qunit.css" type="text/css" media="screen" />
+	</head>
+	<body>
+		<h1 id="qunit-header">QUnit tests</h1>
+		<h2 id="qunit-banner"></h2>
+		<div id="qunit-testrunner-toolbar"></div>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-fixture">
+			<div id="container">
+				@Html.Partial(@"..\..\pages\compose.cshtml")
+				@Html.Partial(@"..\..\pages\inbox.cshtml")
+			</div>
+		</div>
+		
+		@Html.Partial(@"..\..\templates\mail-templates.cshtml")
+
+	    @foreach (var file in System.IO.Directory.GetFiles("fixtures\\", "*.js")
+	                                   .Select(f => f.Replace("\\", "/")))
+	    {
+	        <script type="text/javascript" src="@file"></script>
+	    }
+	</body>
+</html>
