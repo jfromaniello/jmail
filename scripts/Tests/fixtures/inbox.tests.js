@@ -37,3 +37,24 @@ test("when loading an empty inbox then show a message", function() {
     $("div#inbox")
         .assertContainsText("The inbox is empty");
 });
+
+test("while loading the inbox it should show a loading message", function() {
+    var blockUiStub = this.stub($, "blockUI");
+
+    jmail.inbox.loadPage();
+
+    ok(blockUiStub.called);
+    equal(blockUiStub.args[0][0].message, "Loading mails, please wait.");
+});
+
+test("after loading the inbox it should unblock the ui", function(){
+    this.server.respondWith("/getLastestMails",
+                            [200, { "Content-Type": "application/json" },
+                                JSON.stringify([])]);
+    
+    var blockUiStub = this.stub($, "unblockUI");
+    
+    jmail.inbox.loadPage();
+    this.server.respond();
+    ok(blockUiStub.called);
+});
