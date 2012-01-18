@@ -1,11 +1,12 @@
 /**
  * sinon-qunit 1.0.0, 2010/12/09
  *
- * @author Christian Johansen (christian@cjohansen.no)
+ * @author Gustavo Machado (@machadogj), Jose Romaniello (@jfroma)
+ * Modified version of sinon-qunit from Christian Johansen
  *
  * (The BSD License)
  * 
- * Copyright (c) 2010-2011, Christian Johansen, christian@cjohansen.no
+ * Copyright (c) 2010-2011
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification,
