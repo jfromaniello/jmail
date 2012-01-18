@@ -23,7 +23,7 @@ test("can load the inbox mails", function() {
 
 
 test("when loading an empty inbox then show a message", function() {
-    this.server.respondWith("/getLastestMails",
+    this.server.respondWith("/getLatestMails",
                             [200, { "Content-Type": "application/json" },
                                 JSON.stringify([])]);
     
